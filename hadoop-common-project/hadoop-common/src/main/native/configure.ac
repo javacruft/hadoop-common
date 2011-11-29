@@ -84,6 +84,9 @@ AC_CHECK_HEADERS([jni.h], [], AC_MSG_ERROR([Native java headers not found. Is \$
 CPPFLAGS=$cppflags_bak
 AC_SUBST([JNI_CPPFLAGS])
 
+dnl Setup linker flags for computing required DSO's
+DSO_LDFLAGS="-Wl,--no-as-needed"
+
 dnl Check for zlib headers
 AC_CHECK_HEADERS([zlib.h zconf.h], AC_COMPUTE_NEEDED_DSO(z,HADOOP_ZLIB_LIBRARY), AC_MSG_ERROR(Zlib headers were not found... native-hadoop library needs zlib to build. Please install the requisite zlib development package.))
 
